@@ -10,8 +10,9 @@ class CategoriesController extends Controller
     //
     public function index()
     {
-        $category = Category::all();
-        return view('categories.index',compact($category));
+
+        $categories = Category::all();
+        return view('categories.index',compact('categories'));
     }
 
     public function create()
@@ -19,11 +20,15 @@ class CategoriesController extends Controller
         return view('categories.create');
     }
 
-
-    public function stores(Request $request)
+    public function edit($account, Category $category)
     {
-        $category = $this->create($request->all());
-        return redirect()->route('categories.index');
+        return view('categories.edit',compact('category'));
+    }
+
+    public function store(Request $request)
+    {
+        Category::create($request->all());
+        return redirect()->routeTenant('categories.index');
     }
 
 
@@ -31,15 +36,15 @@ class CategoriesController extends Controller
     {
     }
 
-    public function update(Request $request,Category $category)
+    public function update(Request $request, $account,Category $category)
     {
         $category->update($request->all());
-        return redirect()->route('categories.index');
+        return redirect()->routeTenant('categories.index');
     }
 
-    public function destroy(Category $category)
+    public function destroy($account, Category $category)
     {
         $category->delete();
-        return redirect()->route('categories.index');
+        return redirect()->routeTenant('categories.index');
     }
 }

@@ -2,10 +2,13 @@
 
 namespace App;
 
+
 use Illuminate\Database\Eloquent\Model;
+use App\Scopes\TenantModels;
 
 class Category extends Model
 {
-    //
-    protected $fillable = ['name'];
+    use TenantModels;
+    protected $fillable = ['name','account_id'];
+
 }

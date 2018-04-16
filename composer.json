@@ -19,6 +19,9 @@
         "phpunit/phpunit": "^7.0"
     },
     "autoload": {
+        "files" : [
+            "app/helpers.php"
+        ],
         "classmap": [
             "database/seeds",
             "database/factories"
@@ -28,6 +31,9 @@
         }
     },
     "autoload-dev": {
+        "files" : [
+            "app/helpers.php"
+        ],
         "psr-4": {
             "Tests\\": "tests/"
         }

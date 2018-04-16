@@ -12,6 +12,12 @@ class AccountsTableSeeder extends Seeder
     public function run()
     {
         //
-        factory(\App\Account::class,2)->create();
+        factory(\App\Account::class,1)->create([
+            'subdomain' => 'client1'
+        ]);
+
+        factory(\App\Account::class,1)->create([
+            'subdomain' => 'client2'
+        ]);
     }
 }
